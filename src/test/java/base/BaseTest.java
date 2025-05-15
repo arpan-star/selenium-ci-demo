@@ -13,10 +13,10 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
     	ChromeOptions options = new ChromeOptions();
-    	options.addArguments("--headless");
+    	options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
     	WebDriverManager.chromedriver().setup();
         //System.setProperty("webdriver.chrome.driver", "C:\\Users\\Arpan\\Pictures\\MyPersonalLearnings\\Selenium Learnings\\SeleniumDrivers\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get("https://www.phptravels.net");
     }
