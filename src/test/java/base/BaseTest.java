@@ -5,6 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class BaseTest {
     protected WebDriver driver;
 
@@ -12,8 +14,9 @@ public class BaseTest {
     public void setUp() {
     	ChromeOptions options = new ChromeOptions();
     	options.addArguments("--headless");
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Arpan\\Pictures\\MyPersonalLearnings\\Selenium Learnings\\SeleniumDrivers\\chromedriver.exe");
-        driver = new ChromeDriver(options);
+    	WebDriverManager.chromedriver().setup();
+        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\Arpan\\Pictures\\MyPersonalLearnings\\Selenium Learnings\\SeleniumDrivers\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get("https://www.phptravels.net");
     }
